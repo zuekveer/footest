@@ -10,16 +10,16 @@ use Illuminate\Support\Facades\Validator;
 class NotebookController extends Controller
 {
 
-    public function index(Request $request): JsonResponse
+    public function index(Request $request): JsonResponse // Get all notebooks
     {
-        $perPage = $request->get('per_page', 10);  
+        $perPage = $request->get('per_page', 10);  // Number of entries per page (10 by default)
     
         $notebooks = Notebook::paginate($perPage);
     
         return response()->json($notebooks);
     }
 
-    public function store(Request $request): JsonResponse
+    public function store(Request $request): JsonResponse // Create a new notebook
 {
     $validator = Validator::make($request->all(), [
         'fio' => 'required|string|max:255',
@@ -46,7 +46,7 @@ class NotebookController extends Controller
     return response()->json($notebook, 201);
 }
 
-    public function show($id): JsonResponse
+    public function show($id): JsonResponse // Get a single notebook
     {
         $notebook = Notebook::find($id);
 
@@ -57,7 +57,7 @@ class NotebookController extends Controller
         return response()->json($notebook);
     }
 
-    public function update(Request $request, $id): JsonResponse
+    public function update(Request $request, $id): JsonResponse // Update a notebook
 {
     $notebook = Notebook::find($id);
 
@@ -90,7 +90,7 @@ class NotebookController extends Controller
     return response()->json($notebook);
 }
 
-    public function destroy($id): JsonResponse
+    public function destroy($id): JsonResponse // Delete a notebook
     {
         $notebook = Notebook::find($id);
 
