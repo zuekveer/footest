@@ -8,6 +8,8 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Validator;
 
 
+
+
 /**
  * @OA\Schema(
  *     schema="Notebook",
@@ -158,10 +160,10 @@ class NotebookController extends Controller
      *         required=true,
      *         @OA\JsonContent(
      *             required={"fio", "phone", "email"},
-     *             @OA\Property(property="fio", type="string", example="Jane Doe"),
+     *             @OA\Property(property="fio", type="string", example="Janete Doe"),
      *             @OA\Property(property="company", type="string", example="Another Corp"),
      *             @OA\Property(property="phone", type="string", example="+99954321"),
-     *             @OA\Property(property="email", type="string", example="jane.doe@example.com"),
+     *             @OA\Property(property="email", type="string", example="janete.doe@example.com"),
      *             @OA\Property(property="birth_date", type="string", format="date", example="1990-05-15"),
      *             @OA\Property(property="photo", type="string", example="http://example.com/photo.jpg")
      *         )

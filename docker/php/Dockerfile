@@ -1,7 +1,7 @@
-# Базовый образ PHP-FPM
+# Base PHP-FPM image
 FROM php:8.2-fpm
 
-# Установка зависимостей для PHP и базовых инструментов
+# Install PHP dependencies and basic tools
 RUN apt-get update \
     && apt-get install -y \
         libpq-dev \
@@ -18,34 +18,24 @@ RUN apt-get update \
     && pecl install apcu \
     && docker-php-ext-enable apcu
 
-# Установка Node.js и npm для сборки фронтенда (Vite)
-RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
-    && apt-get install -y nodejs
-
-# Установка yarn (опционально, если нужно)
-RUN npm install --global yarn
-
-# Установка Composer
+# Install Composer
 ENV COMPOSER_ALLOW_SUPERUSER 1
 COPY --from=composer:2.8.0 /usr/bin/composer /usr/bin/composer
 
-# Создание и использование пользователя с UID и GID хоста
+# Create and use a user with the same UID and GID as the host user
 ARG UID
 ARG GID
 RUN groupadd -g ${GID} appgroup && \
     useradd -u ${UID} -g appgroup -m appuser
 
-# Устанавливаем рабочую директорию
+# Set working directory
 WORKDIR /app
 
-# Копируем приложение и устанавливаем правильные права
+# Copy application and set correct permissions
 COPY --chown=appuser:appgroup . /app
 
-# Установка npm-зависимостей для Vite (если есть package.json)
-RUN if [ -f package.json ]; then npm install; fi
-
-# Переключаемся на нового пользователя
+# Switch to the new user
 USER appuser
 
-# Команда для запуска PHP-FPM
+# Command to run PHP-FPM
 CMD ["php-fpm"]

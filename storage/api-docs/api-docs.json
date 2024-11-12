@@ -5,8 +5,8 @@
         "description": "API documentation for managing notebook entries.",
         "contact": {
             "name": "Company Name",
-            "url": "https://example.test",
-            "email": "admin@example.test"
+            "url": "https://t.me/zuekveer",
+            "email": "art.valid@mail.ru"
         },
         "license": {
             "name": "Apache 2.0",
@@ -16,7 +16,7 @@
     },
     "servers": [
         {
-            "url": "http://localhost:82/api/v1",
+            "url": "http://setYourOwnServer:82/api/v1",
             "description": "Local development server"
         }
     ],
@@ -186,7 +186,7 @@
                                 "properties": {
                                     "fio": {
                                         "type": "string",
-                                        "example": "Jane Doe"
+                                        "example": "Janete Doe"
                                     },
                                     "company": {
                                         "type": "string",
@@ -198,7 +198,7 @@
                                     },
                                     "email": {
                                         "type": "string",
-                                        "example": "jane.doe@example.com"
+                                        "example": "janete.doe@example.com"
                                     },
                                     "birth_date": {
                                         "type": "string",

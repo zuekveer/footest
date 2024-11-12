@@ -12,9 +12,9 @@ use Illuminate\Routing\Controller as BaseController;
  *     title="API Documentation",
  *     description="API documentation for managing notebook entries.",
  *     @OA\Contact(
- *         email="admin@example.test",
+ *         email="art.valid@mail.ru",
  *         name="Company Name",
- *         url="https://example.test"
+ *         url="https://t.me/zuekveer"
  *     ),
  *     @OA\License(
  *         name="Apache 2.0",
@@ -23,7 +23,7 @@ use Illuminate\Routing\Controller as BaseController;
  * )
  * 
  * @OA\Server(
- *     url="http://localhost:82/api/v1",
+ *     url="http://setYourOwnServer:82/api/v1",
  *     description="Local development server"
  * )
  */
