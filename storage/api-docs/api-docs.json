@@ -1,0 +1,316 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API Documentation",
+        "description": "API documentation for managing notebook entries.",
+        "contact": {
+            "name": "Company Name",
+            "url": "https://t.me/zuekveer",
+            "email": "art.valid@mail.ru"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://setYourOwnServer:82/api/v1",
+            "description": "Local development server"
+        }
+    ],
+    "paths": {
+        "/api/v1/notebook": {
+            "get": {
+                "tags": [
+                    "Notebook"
+                ],
+                "summary": "Get all notebook entries",
+                "operationId": "3278597f70ffcf3df60a694e0ff0d1c1",
+                "responses": {
+                    "200": {
+                        "description": "List of notebook entries",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Notebook"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Notebook"
+                ],
+                "summary": "Create a new notebook entry",
+                "operationId": "f737e96f4910ff283e75bc7e05c8379f",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "fio",
+                                    "phone",
+                                    "email"
+                                ],
+                                "properties": {
+                                    "fio": {
+                                        "type": "string",
+                                        "example": "John Doe"
+                                    },
+                                    "company": {
+                                        "type": "string",
+                                        "example": "NewBee Corp"
+                                    },
+                                    "phone": {
+                                        "type": "string",
+                                        "example": "+123456789"
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "example": "john.doe@example.com"
+                                    },
+                                    "birth_date": {
+                                        "type": "string",
+                                        "format": "date",
+                                        "example": "1980-01-01"
+                                    },
+                                    "photo": {
+                                        "type": "string",
+                                        "example": "http://example.com/photo.jpg"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Notebook entry created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Notebook"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "The phone or email has already been taken."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/notebook/{id}": {
+            "get": {
+                "tags": [
+                    "Notebook"
+                ],
+                "summary": "Get a specific notebook entry",
+                "operationId": "a07418b0decb4969394e79f597aa543f",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the notebook entry",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Notebook entry found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Notebook"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Notebook entry not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Notebook"
+                ],
+                "summary": "Update an existing notebook entry",
+                "operationId": "f7e5828725095adf9cb16e88426f28e6",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the notebook entry",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "fio",
+                                    "phone",
+                                    "email"
+                                ],
+                                "properties": {
+                                    "fio": {
+                                        "type": "string",
+                                        "example": "Janete Doe"
+                                    },
+                                    "company": {
+                                        "type": "string",
+                                        "example": "Another Corp"
+                                    },
+                                    "phone": {
+                                        "type": "string",
+                                        "example": "+99954321"
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "example": "janete.doe@example.com"
+                                    },
+                                    "birth_date": {
+                                        "type": "string",
+                                        "format": "date",
+                                        "example": "1990-05-15"
+                                    },
+                                    "photo": {
+                                        "type": "string",
+                                        "example": "http://example.com/photo.jpg"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Notebook entry updated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Notebook"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Notebook entry not found"
+                    },
+                    "422": {
+                        "description": "Validation error"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Notebook"
+                ],
+                "summary": "Delete a notebook entry",
+                "operationId": "6be314584e9cc2d22f7dff1d0b286f21",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the notebook entry",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Notebook entry deleted"
+                    },
+                    "404": {
+                        "description": "Notebook entry not found"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Notebook": {
+                "title": "Notebook",
+                "description": "A notebook entry",
+                "required": [
+                    "fio",
+                    "phone",
+                    "email"
+                ],
+                "properties": {
+                    "fio": {
+                        "description": "Full name",
+                        "type": "string"
+                    },
+                    "company": {
+                        "description": "Company name",
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "phone": {
+                        "description": "Phone number",
+                        "type": "string"
+                    },
+                    "email": {
+                        "description": "Email address",
+                        "type": "string",
+                        "format": "email"
+                    },
+                    "birth_date": {
+                        "description": "Birth date",
+                        "type": "string",
+                        "format": "date",
+                        "nullable": true
+                    },
+                    "photo": {
+                        "description": "Photo URL",
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "type": "object"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Notebook",
+            "description": "Notebook"
+        }
+    ]
+}
