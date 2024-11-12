@@ -1,4 +1,4 @@
-# Footest
+# FooTest
 
 ## 1. Description
 
@@ -36,13 +36,13 @@ make phpunit
 
 ### Get All Notebooks
 
-METHOD GET
-Route: customPath/api/v1/notebook
+**METHOD**: `GET` \
+**Route**: `customPath/api/v1/notebook`
 
 
 ### Create a Notebook
 
-**METHOD**: `POST`
+**METHOD**: `POST` \
 **Route**: `customPath/api/v1/notebook/`
 
 ```json
@@ -60,7 +60,7 @@ Body (JSON):
 
 ### Update a Notebook
 
-**METHOD**: `PUT`
+**METHOD**: `PUT` \
 **Route**: `customPath/api/v1/notebook/{id}/`
 
 ```json
@@ -77,13 +77,13 @@ Body (JSON):
 
 ### Get a Single Notebook
 
-**METHOD**: `GET`
+**METHOD**: `GET` \
 **Route**: `customPath/api/v1/notebook/{id}/`
 
 
 ### Delete a Notebook
 
-**Method**: `DELETE`
+**Method**: `DELETE` \
 **Route**: `/api/v1/notebook/{id}`
 
 
