@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NotebookController;
 
 
+
 Route::prefix('v1')->group(function () {
     Route::get('notebook', [NotebookController::class, 'index']);
     Route::post('notebook', [NotebookController::class, 'store']);
